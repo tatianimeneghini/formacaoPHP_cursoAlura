@@ -9,29 +9,45 @@
 //     ];
 // }
 
-//Através da programação procedural, ocorre alguns problemas que podem prejudicar o projeto.
+// Através da programação procedural, ocorre alguns problemas que podem prejudicar o projeto.
 // $conta = criarConta('123.456.789-10', 'Vinicius Dias', 500);
 // var_dump($conta);
 
-//Para criar um novo tipo, utilizamos a Classe, como um modelo definido.
-//Criação da Classe em Orientação a Objetos:
+// Para criar um novo tipo, utilizamos a Classe, como um modelo definido.
+// Criação da Classe em Orientação a Objetos:
 class ContaCorrente {
     //Definir dados da conta a partir da abstração, um dos pilares da POO.
+    public static $numeroContas = 0; // acessar a classe.
+    // Membros estáticos são membros da classe em si, e não de cada instância (objeto).
+    
     private string $cpf;
     private string $nome;
-    private $saldo; // Somente acessa dentro da classe ContaCorrente.
+    private float $saldo; // Somente acessa dentro da classe ContaCorrente.
     // A regra é que sempre as propriedades sejam privadas e só métodos sejam públicos.
 
-    //Função dentro de uma classe é um método.
-    //O PHP entende que a definição é pública, mas é importante declarar sempre.
+    // Função dentro de uma classe é um método.
+    // O PHP entende que a definição é pública, mas é importante declarar sempre.
     
     // O evento de criar o objeto de uma classe é chamado método construtor, no PHP.
     // Serve para inicializar, encapsulando atributos, um dos quatro pilares do POO.
     public function __construct(string $cpf, string $nome) {
         echo "Criando uma nova conta." . PHP_EOL;
-        $this->nome = $nome;
+    
+        //ContaCorrente::$numeroContas++; // incrementar
+        self::$numeroContas++;
+
         $this->cpf = $cpf;
         $this->saldo = 0; // regra de negócio
+        $this->nome = $nome;
+        $this->validarNome($nome);    
+    }
+
+    // Método destutor
+    // No PHP, existe um método chamado garbage selector/destrutor que remove um objeto/instância deixa de existir.
+    public function __destruct() {
+        if (self::$numeroContas > 2) {
+            echo "Há mais de uma conta ativa";
+        }
     }
 
     // Métodos que acessam e modificam.
@@ -87,5 +103,18 @@ class ContaCorrente {
 
     public function recuperarNome(): string {
         return $this->nome;
+    }
+
+       // Refatoração é melhorar o código, sem alterar o comportamento.
+    // A função privada é uma validação interna, sem expor seu comportamento.
+    private function validarNome(string $nome) {
+        if (strlen($nome < 5)) { // tamanho da string
+            echo "Nome precisa ter pelo menos 5 caracteres.";
+            exit();
+        }
+    }
+
+    public static function recuperarNumeroContas(): init {
+        return self::$numeroContas;
     }
 }

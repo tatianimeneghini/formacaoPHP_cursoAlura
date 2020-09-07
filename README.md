@@ -4,7 +4,7 @@ Exercícios da formação em PHP da Alura, com o professor Vinicius Dias.
 ### Estrutura
 - [X] Módulo 1 - Introdução ao PHP: Primeiros passos;
 - [X] Módulo 2 - Avançando com PHP: Arrays, Strings, Função e Web;
-- [-] Módulo 3 - Orientação a Objetos com PHP: Classes, métodos e atributos;
+- [X] Módulo 3 - Orientação a Objetos com PHP: Classes, métodos e atributos;
 - [ ] Módulo 4 - Avançando com Orientação a Objetos com PHP: Herança, Polimorfismo e Interferência;
 - [ ] Módulo 5 - PHP: Manipulando coleções com Arrays;
 - [ ] Módulo 6 - PHP Exceptions: Tratamento de erros;

@@ -21,8 +21,7 @@ class ContaCorrente {
     // Membros estáticos são membros da classe em si, e não de cada instância (objeto).
     
     private string $cpf;
-    private string $nome;
-    private float $saldo; // Somente acessa dentro da classe ContaCorrente.
+    private string $titular; // Somente acessa dentro da classe ContaCorrente.
     // A regra é que sempre as propriedades sejam privadas e só métodos sejam públicos.
 
     // Função dentro de uma classe é um método.
@@ -30,16 +29,14 @@ class ContaCorrente {
     
     // O evento de criar o objeto de uma classe é chamado método construtor, no PHP.
     // Serve para inicializar, encapsulando atributos, um dos quatro pilares do POO.
-    public function __construct(string $cpf, string $nome) {
+    public function __construct(Titular $titular) {
         echo "Criando uma nova conta." . PHP_EOL;
     
         //ContaCorrente::$numeroContas++; // incrementar
         self::$numeroContas++;
 
-        $this->cpf = $cpf;
-        $this->saldo = 0; // regra de negócio
-        $this->nome = $nome;
-        $this->validarNome($nome);    
+        $this->titular = $titular;
+        $this->saldo = 0; // regra de negócio   
     }
 
     // Método destutor
@@ -89,29 +86,13 @@ class ContaCorrente {
     }
 
     // Método set - define.
-    // public function definirCPF(string $cpf): void {
-    //     $this->cpf = $cpf;
-    // }
 
-    public function recuperarCPF(): string {
-        return $this->cpf;
+    public function recuperarNomeTitular(): string {
+        return $this->titular->recuperarNome();
     }
 
-    // public function definirNome($nome): void {
-    //     $this->nome = $nome;
-    // }
-
-    public function recuperarNome(): string {
-        return $this->nome;
-    }
-
-       // Refatoração é melhorar o código, sem alterar o comportamento.
-    // A função privada é uma validação interna, sem expor seu comportamento.
-    private function validarNome(string $nome) {
-        if (strlen($nome < 5)) { // tamanho da string
-            echo "Nome precisa ter pelo menos 5 caracteres.";
-            exit();
-        }
+    public function recuperarCPFTitular(): string {
+        return $this->titular->recuperarCPF();
     }
 
     public static function recuperarNumeroContas(): init {

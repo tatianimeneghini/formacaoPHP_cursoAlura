@@ -1,9 +1,12 @@
 <?php
 
-require_once 'src/Conta.php';
-require_once 'src/Endereco.php';
-require_once 'src/Titular.php';
-require_once 'src/CPF.php';
+require_once 'autoload.php';
+
+use Alura\Banco\Model\Endereco;
+use Alura\Banco\Model\Titular;
+use Alura\Banco\Model\Conta\Conta;
+use Alura\Banco\Model\CPF;
+use Alura\Banco\Model\Funcionario;
 
 $endereco = new Endereco('Petrópolis', 'Bairro das Pedras', 'Rua das Ametistas', '12');
 $vinicius = new Titular(new CPF('123.456.789-00'), 'Vinicius Dias', $endereco);
@@ -20,3 +23,6 @@ $segundaConta = new Conta($patricia);
 var_dump($segundaConta);
 
 echo Conta::recuperarNumeroContas();
+
+$umFuncionario = new Funcionario('Vinicius', new CPF('123.456.789-10'), 'Desenvolvedor');
+var_dump($umFuncionario);

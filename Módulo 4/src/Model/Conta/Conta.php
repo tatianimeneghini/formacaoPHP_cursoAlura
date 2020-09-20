@@ -1,5 +1,7 @@
 <?php
 
+namespace Alura\Banco\Model\Conta;
+
 class ContaCorrente {
     public static $numeroContas = 0; 
     

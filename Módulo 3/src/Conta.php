@@ -15,7 +15,7 @@
 
 // Para criar um novo tipo, utilizamos a Classe, como um modelo definido.
 // Criação da Classe em Orientação a Objetos:
-class ContaCorrente {
+class Conta {
     //Definir dados da conta a partir da abstração, um dos pilares da POO.
     public static $numeroContas = 0; // acessar a classe.
     // Membros estáticos são membros da classe em si, e não de cada instância (objeto).
@@ -32,7 +32,7 @@ class ContaCorrente {
     public function __construct(Titular $titular) {
         echo "Criando uma nova conta." . PHP_EOL;
     
-        //ContaCorrente::$numeroContas++; // incrementar
+        //Conta::$numeroContas++; // incrementar
         self::$numeroContas++;
 
         $this->titular = $titular;

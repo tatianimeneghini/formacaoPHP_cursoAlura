@@ -2,8 +2,11 @@
 
 namespace Alura\Banco\Model\Conta;
 
-class ContaCorrente {
-    public static $numeroContas = 0; 
+//Classe abstrata é uma classe que falta outros dados para ser implementada.
+abstract class Conta { 
+    private $titular;
+    private $saldo;
+    public static $numeroContas = 0;
     
     public function __construct(Titular $titular) {
         echo "Criando uma nova conta." . PHP_EOL;
@@ -12,6 +15,7 @@ class ContaCorrente {
 
         $this->titular = $titular;
         $this->saldo = 0;  
+        $this->tipo;
     }
 
     public function __destruct() {
@@ -20,13 +24,15 @@ class ContaCorrente {
         }
     }
 
-    public function sacar(float $valorSacar):void {
+    public function sacar(float $valorASacar):void {       
+        $tarifaSaque = $valorASacar * $this->percentualTarifa();
+        $valorSaque = $valorASacar + $tarifaSaque;
         
-        if ($valorSacar > $this->saldo) {
+        if ($valorASacar > $this->saldo) {
             echo "Saldo indisponível";
             return;
         } 
-        $this->saldo -= $valorSacar;       
+        $this->saldo -= $valorSaque;       
     }
 
     public function depositar( $valorADepositar): void {
@@ -36,16 +42,6 @@ class ContaCorrente {
         } 
 
         $this->saldo += $valorADepositar;
-    }
-
-    public function transferir(float $valorATransferir, $contaDestino): void {
-        if ($valorATransferir > $this->saldo) {
-            echo "Saldo indisponível";
-            return;
-        } 
-
-        $this->sacar($valorATransferir);
-        $contaDestino->depositar($valorATransferir);
     }
 
     public function recuperarSaldo(): float {
@@ -63,4 +59,6 @@ class ContaCorrente {
     public static function recuperarNumeroContas(): init {
         return self::$numeroContas;
     }
+
+    abstract protected function percentualTarifa(): float;
 }

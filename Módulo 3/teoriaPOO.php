@@ -19,3 +19,5 @@
 
 // - Herança é o terceiro pilar da POO.
 //Reutilizar o código é quando uma classe estende outra, herdando tudo que uma classe base tem, e adicionando comportamentos específicos.
+
+// - Polimorfismo é o quarto pilar da POO e é a capacidade de um objeto poder ser referenciado de várias formas.

@@ -4,7 +4,7 @@ namespace Alura\Banco\Model\Funcionario;
 
 class Desenvolvedor extends Funcionario {
     public function calcularBonificacao(): float {
-        return $this->recuperarSalario() * 0.05;
+        return 500.00;
     }
 
     public function subirNivel() {

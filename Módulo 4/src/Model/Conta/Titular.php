@@ -6,7 +6,7 @@ use Alura\Banco\Model\Pessoa;
 use Alura\Banco\Model\CPF;
 use Alura\Banco\Model\recuperarEndereco;
 
-class Titular extends Pessoa { // a classe extende a outra.
+class Titular extends Pessoa implements Autenticavel { // a classe extende a outra.
     private Endereco $endereco;
 
     public function __construct(CPF $cpf, $nome, Endereco $endereco) {
@@ -16,6 +16,10 @@ class Titular extends Pessoa { // a classe extende a outra.
 
     public function recuperarEndereco(): Endereco {
         return $this->endereco;
+    }
+
+    public function podeAutenticar (string $senha): bool {
+        return $senha === 'abcd';
     }
     
 }

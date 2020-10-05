@@ -2,7 +2,10 @@
 
 namespace Alura\Banco\Model\Funcionario;
 
-class Diretor extends Funcionario {
+use Alura\Banco\Model\Autenticavel;
+use Couchbase\Autenticador;
+
+class Diretor extends Funcionario implements Autenticavel {
     public function calcularBonificacao(): float {
         return $this->recuperarSalario() * 2;
     }

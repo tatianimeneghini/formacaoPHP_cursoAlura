@@ -6,7 +6,7 @@ Exercícios da formação em PHP da Alura, com o professor Vinicius Dias.
 - [X] Módulo 2 - Avançando com PHP: Arrays, Strings, Função e Web;
 - [X] Módulo 3 - Orientação a Objetos com PHP: Classes, métodos e atributos;
 - [X] Módulo 4 - Avançando com Orientação a Objetos com PHP: Herança, Polimorfismo e Interferência;
-- [ ] Módulo 5 - PHP: Manipulando coleções com Arrays;
+- [X] Módulo 5 - PHP: Manipulando coleções com Arrays;
 - [ ] Módulo 6 - PHP Exceptions: Tratamento de erros;
 - [ ] Módulo 7 - PHP Composer: Dependências, Autoload e Publicação;
 - [ ] Módulo 8 - PHP e PDO: Trabalhando com banco de dados;
